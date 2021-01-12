@@ -4,11 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-
 import java.util.Set;
 
 import static javax.persistence.CascadeType.ALL;
-import static javax.persistence.GenerationType.*;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Getter
 @Setter
@@ -35,12 +34,18 @@ public class Recipe {
     @Lob
     private Byte[] image;
 
+    @ManyToMany
+    @JoinTable(
+            name = "recipe_category",
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    private Set<Category> categories;
+
     @OneToMany(mappedBy = "recipe", cascade = ALL)
     private Set<Ingredient> ingredients;
 
     @OneToOne(cascade = ALL)
     private Notes notes;
-
 
 
 }
