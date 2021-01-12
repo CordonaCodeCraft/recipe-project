@@ -5,8 +5,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
+import static javax.persistence.FetchType.*;
 import static javax.persistence.GenerationType.*;
 
 @Getter
@@ -21,6 +23,6 @@ public class Category {
 
     private String description;
 
-    @ManyToMany(mappedBy = "categories")
-    private Set<Recipe> recipes;
+    @ManyToMany(mappedBy = "categories", fetch = EAGER)
+    private Set<Recipe> recipes = new HashSet<>();
 }

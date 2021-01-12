@@ -1,7 +1,6 @@
 package com.cordona.recipeproject.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -11,6 +10,9 @@ import static javax.persistence.GenerationType.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 
 @Entity(name = "Ingredient")
 public class Ingredient {
@@ -28,5 +30,10 @@ public class Ingredient {
     @OneToOne
     private UnitOfMeasure unitOfMeasure;
 
-
+    public Ingredient(String description, BigDecimal amount, UnitOfMeasure unitOfMeasure, Recipe recipe) {
+        this.description = description;
+        this.amount = amount;
+        this.recipe = recipe;
+        this.unitOfMeasure = unitOfMeasure;
+    }
 }
