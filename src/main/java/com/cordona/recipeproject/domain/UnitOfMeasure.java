@@ -11,7 +11,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 
 @Entity(name = "UnitOfMeasure")
-@Table(name = "units_of_measure")
 public class UnitOfMeasure {
 
     @Id

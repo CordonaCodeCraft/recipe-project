@@ -13,7 +13,6 @@ import static javax.persistence.GenerationType.*;
 @Setter
 
 @Entity(name = "Category")
-@Table(name = "categories")
 public class Category {
 
     @Id

@@ -13,7 +13,6 @@ import static javax.persistence.GenerationType.*;
 @Setter
 
 @Entity(name = "Ingredient")
-@Table(name = "ingredients")
 public class Ingredient {
 
     @Id

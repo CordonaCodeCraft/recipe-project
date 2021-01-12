@@ -12,7 +12,6 @@ import static javax.persistence.GenerationType.*;
 @Setter
 
 @Entity(name = "Notes")
-@Table(name = "notes")
 public class Notes {
 
     @Id
