@@ -5,6 +5,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+import java.util.Set;
+
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.GenerationType.*;
 
@@ -30,8 +32,12 @@ public class Recipe {
     @Lob
     private Byte[] image;
 
+    @OneToMany(mappedBy = "recipe", cascade = ALL)
+    private Set<Ingredient> ingredients;
+
     @OneToOne(cascade = ALL)
     private Notes notes;
+
 
 
 }
