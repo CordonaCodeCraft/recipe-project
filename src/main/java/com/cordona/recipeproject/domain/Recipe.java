@@ -15,6 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 @Entity(name = "Recipe")
 public class Recipe {
 

@@ -4,6 +4,7 @@ import com.cordona.recipeproject.domain.*;
 import com.cordona.recipeproject.repositories.CategoryRepository;
 import com.cordona.recipeproject.repositories.RecipeRepository;
 import com.cordona.recipeproject.repositories.UnitOfMeasureRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -17,6 +18,9 @@ import java.util.Optional;
 /**
  * Created by jt on 6/13/17.
  */
+
+@Slf4j
+
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -34,6 +38,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading Bootstrap Data");
     }
 
     private List<Recipe> getRecipes() {

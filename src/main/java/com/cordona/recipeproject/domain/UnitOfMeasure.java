@@ -1,7 +1,6 @@
 package com.cordona.recipeproject.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -9,6 +8,9 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 
 @Entity(name = "UnitOfMeasure")
 public class UnitOfMeasure {

@@ -1,7 +1,6 @@
 package com.cordona.recipeproject.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.persistence.*;
@@ -10,6 +9,9 @@ import static javax.persistence.GenerationType.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 
 @Entity(name = "Notes")
 public class Notes {
