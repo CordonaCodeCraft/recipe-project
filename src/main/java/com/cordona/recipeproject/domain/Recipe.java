@@ -46,7 +46,7 @@ public class Recipe {
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
-    @OneToMany(mappedBy = "recipe", cascade = ALL)
+    @OneToMany(mappedBy = "recipe", cascade = ALL, fetch = EAGER)
     private Set<Ingredient> ingredients = new HashSet<>();
 
     @OneToOne(cascade = ALL)
