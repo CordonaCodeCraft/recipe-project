@@ -1,5 +1,6 @@
 package com.cordona.recipeproject.controllers;
 
+import com.cordona.recipeproject.services.IngredientService;
 import com.cordona.recipeproject.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IngredientController {
 
     private final RecipeService recipeService;
+    private final IngredientService ingredientService;
 
     @Autowired
-    public IngredientController(RecipeService recipeService) {
+    public IngredientController(RecipeService recipeService, IngredientService ingredientService) {
         this.recipeService = recipeService;
+        this.ingredientService = ingredientService;
     }
 
     @GetMapping
     @RequestMapping("/recipe/{recipeId}/ingredients")
-    public String getListOfIngredients(@PathVariable String recipeId, Model model ) {
+    public String getListOfIngredients(@PathVariable String recipeId, Model model) {
         log.debug("Geting ingredient list for recipe with id: " + recipeId);
 
         model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(recipeId)));
 
         return "recipe/ingredients/list";
+    }
+
+    @GetMapping
+    @RequestMapping("recipe/{recipeId}/ingredient/{id}/show")
+    public String showRecipeIngredient(@PathVariable String recipeId, @PathVariable String id, Model model) {
+        model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(id)));
+        return "recipe/ingredients/show";
     }
 
 }
